@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+  grafana_cn:
+    image: grafana/grafana:6.7.4 #指定服務的映像檔名稱或映像檔ID :後可指定版本號
+    restart: always   # 支援四種no、always、on-failure、unless-stopped
+    links:
+      - perf_database:db
+    ports:
+      - "30000:3000" #本機的30000 對映container內的 3000
+    volumes:
+        - /etc/timezone:/etc/timezone  # 本機/etc/timezone連通到Container的/etc/timezone
+        - /etc/localtime:/etc/localtime #這兩段為定義時區與本機時間相同
+    environment:   
+        - TZ=Asia/Taipei
+  perf_database:
+    image: mysql:5.7
+    environment: #定義容器內的環境變數
+      MYSQL_DATABASE: iOSPerformance #直接定義DB名稱
+      MYSQL_ROOT_PASSWORD: admin
+        - TZ=Asia/Taipei
+    ports:
+      - "33306:3306"
+    restart: always
+
+    volumes:
+        - /etc/timezone:/etc/timezone
+        - /etc/localtime:/etc/localtime
