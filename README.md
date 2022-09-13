@@ -133,4 +133,4 @@ python mysql.py --runid=iphone6_1008_1532 \
 --mysql_db=iOSPerformance
 ```
 
-其中，`--runid`為必須參數，可以從顯示測試數據的Grafana頁面的左上角找到，通常為手機名稱+月日+時分。其餘Mysql參數均為可選參數，默認值與上方[MySQL可選參數](#MySQL可選參數)相同。
+其中，`--runid`為必須參數，可以從顯示測試數據的Grafana頁面的左上角找到，通常為手機名稱+月日+時分。其餘Mysql參數均為可選參數，默認值與上方[MySQL參數](#MySQL可選參數)相同。
