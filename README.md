@@ -2,15 +2,15 @@
 
 [READ IN ENGLISH](./README_EN.md)
 
-这是一款iOS性能监控工具，支持Mac以及Windows端运行，电脑通过USB连接手机后运行脚本即可。
+這是一款iOS性能監控工具，支持Mac以及Windows端運行，電腦通過USB連接手機後運行腳本即可。
 
-当前支持获取的性能数据包括GPU、CPU、内存、FPS、功耗、网络、温度，以及一系列手机硬件数据，并将根据需求继续新增。
+當前支持獲取的性能數據包括GPU、CPU、內存、FPS、功耗、網絡、溫度，以及一系列手機硬件數據，並將根據需求繼續新增。
 
-本项目基于jlintxia开源的iOS测试方案修改而来，增加动态建表，动态增加grafana面板以及docker打包环境等特性。其中iOS性能数据来源于开源工具tidevice和py-ios-device。
+本項目基於jlintxia開源的iOS測試方案修改而來，增加動態建表，動態增加grafana面板以及docker打包環境等特性。其中iOS性能數據來源於開源工具tidevice和py-ios-device。
 
 
-注意：本项目依赖MySQL进行性能数据存储，Grafana进行数据动态展示，也就是说需要在本机或者可达的网络（比如公司局域网）
-上搭建MySQL+Grafana服务，我提供了一份docker-compose.yml文件，可以使用docker快速搭建一套环境。
+注意：本項目依賴MySQL進行性能數據存儲，Grafana進行數據動態展示，也就是說需要在本機或者可達的網絡（比如公司局域網）
+上搭建MySQL+Grafana服務，我提供了一份docker-compose.yml文件，可以使用docker快速搭建一套環境。
 
 
 
@@ -24,45 +24,45 @@
 
 
 
-## 准备工作
+## 準備工作
 
-服务端搭建依赖docker以及docker-compose，安装指南：
+服務端搭建依賴docker以及docker-compose，安裝指南：
 
 >https://dockerdocs.cn/get-docker/
 >
 >https://dockerdocs.cn/get-started/08_using_compose/
 
-运行测试依赖python3环境，安装指南：
+運行測試依賴python3環境，安裝指南：
 
 >https://www.python.org/downloads/
 
 
-### 服务端搭建
+### 服務搭建
 
-命令行运行
+cmd執行
 
 ```
 docker -v && docker-compose -v
 ```
 
-如果能正常输出版本，如下，则表示docker环境正常，可以继续
+如果能正常輸出版本，如下，則表示docker環境正常，可以繼續
 
 >Docker version 20.10.8, build 3967b7d
 >
 >docker-compose version 1.29.2, build 5becea4c
 
-拉取镜像并启动服务：
+拉取鏡像並啟動服務：
 
 ```
 docker-compose up -d  
 ```
-**提示：初次打开`Grafana`时，系统会提示你修改密码，为了方便建议不修改，即保持账号密码均为`admin`，否则在python运行指令中将要进行对应的传参。**
+**提示：初次打開`Grafana`時，系統會提示你修改密碼，為了方便建議不修改，即保持賬號密碼均為`admin`，否則在python運行指令中將要進行對應的傳參。 **
 
 
 
-### 本地环境搭建
+### 本地環境配置
 
-命令行执行
+CMD執行
 
 ```
 pip install -r requirements.txt
@@ -75,8 +75,8 @@ pip install -r requirements.txt
 
 
 
-## 运行命令
-命令行执行：
+## 運行命令
+命令行執行：
 ```shell
 python run.py --udid=00008110-001A4D483CF2801E \
 --bundleid=com.apple.Preferences \
@@ -92,18 +92,18 @@ python run.py --udid=00008110-001A4D483CF2801E \
 ```
 
 
-### 运行参数说明
+### 運行參數說明
 
 
 
-#### 建议修改参数
+#### 需要修改的參數
 
 >- --bundleid：待测APP的包名，通过`ideviceinstaller -l`获取，默认值为`com.apple.Preferences`
 >- --udid iPhone：手机的唯一标识符，通过 `idevice_id -l` 获取，客户端只连接一台手机时不用写
 
 
 
-#### Grafana可选参数
+#### Grafana可以設定的參數
 
 > - --grafana_host：Grafana的主机地址，只写ip，不用写Scheme，也就是`http://`或者`https//`，默认值localhost
 > - --grafana_port：Grafana的端口号，默认值30000
@@ -112,7 +112,7 @@ python run.py --udid=00008110-001A4D483CF2801E \
 
 
 
-#### MySQL可选参数
+#### MySQL參數
 
 > - --mysql_host：MySQL的主机地址，不用写Scheme，也就是`http://`或者`https//`，默认值localhost
 > - --mysql_port：MySQL的端口号，默认值33306
@@ -121,9 +121,9 @@ python run.py --udid=00008110-001A4D483CF2801E \
 
 
 
-## 数据导出
+## 數據導出
 
-命令行执行：
+命令執行：
 ```shell
 python mysql.py --runid=iphone6_1008_1532 \
 --mysql_host=localhost \
@@ -133,4 +133,4 @@ python mysql.py --runid=iphone6_1008_1532 \
 --mysql_db=iOSPerformance
 ```
 
-其中，`--runid`为必须参数，可以从显示测试数据的Grafana页面的左上角找到，通常为手机名称+月日+时分。其余Mysql参数均为可选参数，默认值与上方[MySQL可选参数](#MySQL可选参数)相同。
+其中，`--runid`為必須參數，可以從顯示測試數據的Grafana頁面的左上角找到，通常為手機名稱+月日+時分。其餘Mysql參數均為可選參數，默認值與上方[MySQL可選參數](#MySQL可選參數)相同。
