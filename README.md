@@ -98,26 +98,22 @@ python run.py --udid=00008110-001A4D483CF2801E \
 
 #### 需要修改的參數
 
->- --bundleid：待测APP的包名，通过`ideviceinstaller -l`获取，默认值为`com.apple.Preferences`
->- --udid iPhone：手机的唯一标识符，通过 `idevice_id -l` 获取，客户端只连接一台手机时不用写
-
-
+> - --bundleid：待測APP的包名，通過`ideviceinstaller -l`獲取，默認值為`com.apple.Preferences`
+> - --udid：iPhone手機的唯一標識符，通過 `idevice_id -l` 獲取，客戶端只連接一台手機時不用寫
 
 #### Grafana可以設定的參數
 
-> - --grafana_host：Grafana的主机地址，只写ip，不用写Scheme，也就是`http://`或者`https//`，默认值localhost
-> - --grafana_port：Grafana的端口号，默认值30000
-> - --grafana_user：Grafana的用户名，默认值admin
-> - --grafana_password：Grafana的密码，默认值admin
-
-
+> - --grafana_host：Grafana的主機地址，只寫ip，不用寫Scheme，也就是`http://`或者`https//`，默認值localhost
+> - --grafana_port：Grafana的端口號，默認值30000
+> - --grafana_user：Grafana的用戶名，默認值admin
+> - --grafana_password：Grafana的密碼，默認值admin
 
 #### MySQL參數
 
-> - --mysql_host：MySQL的主机地址，不用写Scheme，也就是`http://`或者`https//`，默认值localhost
-> - --mysql_port：MySQL的端口号，默认值33306
-> - --mysql_user：MySQL的用户名，默认值root
-> - --mysql_password：MySQL的密码，默认值admin
+> - --mysql_host：MySQL的主機地址，不用寫Scheme，也就是`http://`或者`https//`，默認值localhost
+> - --mysql_port：MySQL的端口號，默認值33306
+> - --mysql_user：MySQL的用戶名，默認值root
+> - --mysql_password：MySQL的密碼，默認值admin
 
 
 
